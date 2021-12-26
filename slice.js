@@ -1,49 +1,91 @@
-function slice(str,start,end) {
+function slice(arr,start,end) {
 
+	let newArr = [];
 	let newStr = '';
 	
-
-		if(start >= 0 && end > 0){
+if(Array.isArray(arr) === true){
+	if(start >= 0 && end > 0){
 
 			for(let i = start; i < end; i++) {
 
-				newStr += str[i];
+				newArr.push(arr[i]);
 				
 			}
 
 		}
 		else if(start < 0 && end < 0 && end > start) {
 			
-			for(let i = str.length + start; i < str.length+end; i++){
+			for(let i = arr.length + start; i < arr.length + end; i++){
 				
-				newStr += str[i];
+				newArr.push(arr[i]);
 			}
 		}
 		else if(start > 0 && end === undefined){
 
-			for(let i = start; i < str.length; i++) {
+			for(let i = start; i < arr.length; i++) {
 				
-				newStr += str[i];
+				newArr.push(arr[i]);
 			}
 		}
-		else if(start < 0 && end === undefined && str.length + start > 0) {
+		else if(start < 0 && end === undefined && arr.length + start > 0) {
+
+				for(let i = arr.length + start; i < arr.length; i++){
 			
-				for(let i = str.length + start; i < str.length; i++){
-			
-					newStr += str[i];
+					newArr.push(arr[i]);
 		 	}
 		 }
 		else {
-				return str;
+				return arr;
+		 }	
+	
+		return newArr;
+}
+	else if(typeof arr === 'string') {
+		if(start >= 0 && end > 0){
+
+			for(let i = start; i < end; i++) {
+
+				
+				
+			}
+
+		}
+		else if(start < 0 && end < 0 && end > start) {
+			
+			for(let i = arr.length + start; i < arr.length + end; i++){
+				
+				newStr += arr[i];
+			}
+		}
+		else if(start > 0 && end === undefined){
+
+			for(let i = start; i < arr.length; i++) {
+				
+				newStr += arr[i];
+			}
+		}
+		else if(start < 0 && end === undefined && arr.length + start > 0) {
+
+				for(let i = arr.length + start; i < arr.length; i++){
+			
+					newStr += arr[i];
+		 	}
+		 }
+		else {
+				return arr;
 		 }	
 	
 		return newStr;
+	}
+	else {
+		return 'enter string or array';
+	}	
 		
 }
 
 
-console.log('Hello World'.slice(0,3));
-console.log(slice('Hello World',0,3));
+console.log(['H','e','l','lo', 'World'].slice(0,3));
+console.log(slice(['H','e','l','lo', 'World'],0,3));
 console.log('Hello World'.slice(0));
 console.log(slice('Hello World',0));
 console.log('Hello World'.slice(-4,-1));
